@@ -29,5 +29,10 @@ class Validator
             return false;
         }
     }
+
+    public function GetUserDetails(){
+        if(VerifyLogin())
+            return json_decode($_SESSION['user']);
+    }
 }
 ?>

@@ -196,7 +196,7 @@ class Order
 		return json_encode($response);
 	}
 
-	public function get_closed_orders(int $cod_fornitore){
+	public function get_closed_orders($cod_fornitore){
 		$hostname = DB_HOST;
         $dbname = DB_NAME;
         $user = DB_USER;
@@ -206,7 +206,7 @@ class Order
 		
 
 		$db = new PDO("mysql:host=$hostname;dbname=$dbname", $user, $pass);
-		$stmt = $db->prepare("SELECT codice FROM ordine WHERE chiuso=0 AND cod_forntiore=:cod_fornitore");//two inputs and one output
+		$stmt = $db->prepare("SELECT codice FROM ordine WHERE chiuso=1 AND cod_fornitore=:cod_fornitore");//two inputs and one output
 		$stmt->bindParam(":cod_fornitore", $cod_fornitore,PDO::PARAM_INT);
         $stmt->execute();
 		while($row = $stmt->fetch()){

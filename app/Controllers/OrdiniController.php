@@ -44,6 +44,11 @@ class OrdiniController
 		}
 	}
 
+	public function closeOrder()
+	{
+
+	}
+
 	public function InsertRiga()
 	{
 		$this->validator=new Validator();
